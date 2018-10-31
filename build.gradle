@@ -1,0 +1,24 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+sourceSets {
+    main.java.srcDirs = main.java.srcDirs = ['src/main']
+    test.java.srcDirs = test.java.srcDirs = ['src/test']
+    main.resources.srcDirs = ['src/main/resources']
+    test.resources.srcDirs = ['src/test/resources']
+}
+
+dependencies {
+    testCompile("org.assertj:assertj-core:3.11.1")
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+}
+
+test {
+    useJUnitPlatform()
+}
