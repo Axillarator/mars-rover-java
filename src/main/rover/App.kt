@@ -22,12 +22,35 @@ class App {
         return input ?: ""
     }
 
-    fun readInput(){
+
+}
+
+class Input{
+
+    //var plateau_x: Integer
+    val input_text_list = readInput()
+    val plateau_x = getPlateau()[0]
+    val plateau_y = getPlateau()[1]
+
+
+    fun readInput(): List<String>{
         val fileName = "src/main/rover/input.txt"
-        val content = File(fileName).readText()
-        println(content)
+        val content = File(fileName).readLines()
+        //println(content)
+        return content
+    }
+
+    fun getPlateau(): List<Int>{
+        val text_list = input_text_list[0].split(" ")
+        val int_list = mutableListOf<Int>()
+
+        for (i in 0..1){
+            int_list.add(text_list[i].toInt())
+        }
+        return int_list
     }
 }
+
 
 class Rover(x_start: Int, y_start: Int, heading: String){
 
