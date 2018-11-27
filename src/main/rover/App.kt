@@ -1,51 +1,27 @@
 package rover
 
-import java.io.File
-import javax.print.attribute.IntegerSyntax
-
 class App {
     fun main(args: Array<String>) {
         //read the input from file
+        val input = Input()
+        val squad = input.squad
+        val paths = input.paths
+
+        println("Output and new coordinates")
         //for each rover
-        //  perform movement
-        //  print output
-    }
+        for (i in 0..squad.lastIndex){
+            //  perform movement
+            squad[i].move(paths[i])
 
-    
-
-    fun userInput(): String {
-        val input: String?
-        input = readLine()
-        return input ?: ""
-    }
-
-
-}
-
-class Input{
-
-    //var plateau_x: Integer
-    val input_text_list = readInput()
-    val plateau_x = getPlateau()[0]
-    val plateau_y = getPlateau()[1]
-
-
-    fun readInput(): List<String>{
-        val fileName = "src/main/rover/input.txt"
-        val content = File(fileName).readLines()
-        //println(content)
-        return content
-    }
-
-    fun getPlateau(): List<Int>{
-        val text_list = input_text_list[0].split(" ")
-        val int_list = mutableListOf<Int>()
-
-        for (i in 0..1){
-            int_list.add(text_list[i].toInt())
+            //  print output
+            print(squad[i].x)
+            print(" ")
+            print(squad[i].y)
+            print(" ")
+            println(squad[i].facing)
         }
-        return int_list
     }
 }
+
 
 
